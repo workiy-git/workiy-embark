@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section class="platform">
+    <div class="wky-container">
+        <div class="wky-row wky-wrap">
+        </div>
+        <div class="wky-row wky-wrap">
+            {% for key,row in rows %}
+                <div class="wky-col-sm-12 wky-col-lg-4">
+                    <div class="platform-listing-img">
+                        {{ view.style_plugin.getField(key, 'field_team_image') }}
+                    </div>
+                    <div class="platform-listing-content">
+                        <div class="left-color-bar" style="background-color:{{ view.style_plugin.getField(key, 'field_color_')|striptags|trim }}"></div>
+                        <div class="right-content">
+                            <h3 class="heading">{{ view.style_plugin.getField(key, 'title') }}</h3>
+                            <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+                            <div class="social-links">
+                                {{ view.style_plugin.getField(key, 'field_social_media') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
