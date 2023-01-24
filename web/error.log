@@ -1,0 +1,4 @@
+[Sun Jan 22 22:26:35.830894 2023] [authz_core:error] [pid 1184] [client 93.185.162.12:35652] AH01630: client denied by server configuration: /var/www/html/web/web.config
+[Sun Jan 22 22:26:35.830939 2023] [negotiation:error] [pid 1184] [client 93.185.162.12:35652] AH00687: Negotiation: discovered file(s) matching request: /var/www/html/web/web (None could be negotiated).
+[Mon Jan 23 11:12:02.603616 2023] [authz_core:error] [pid 4013] [client 206.189.44.20:58552] AH01630: client denied by server configuration: /var/www/html/web/web.config
+[Mon Jan 23 11:12:02.603649 2023] [negotiation:error] [pid 4013] [client 206.189.44.20:58552] AH00687: Negotiation: discovered file(s) matching request: /var/www/html/web/web (None could be negotiated).
