@@ -1,0 +1,21 @@
+name: Workiy
+type: theme
+description: 'Custom Theme for Workiy Website.'
+package: Other
+core_version_requirement: ^8 || ^9
+
+libraries:
+  - workiy/global-styling
+  - workiy/slick-slider
+
+base theme: classy
+
+regions:
+  branding: Branding
+  navigation: Main navigation
+  search: Search
+  featured: Featured
+  content: Content
+  footer_first: Footer First
+  footer_second: Footer Second
+  footer_bottom: Footer Bottom
