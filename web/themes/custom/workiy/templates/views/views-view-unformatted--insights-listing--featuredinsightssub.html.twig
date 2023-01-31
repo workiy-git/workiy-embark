@@ -1,0 +1,74 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section class="insight-featured">
+    <div class="wky-container">
+        <div class="wky-row wky-wrap">
+            <div class="wky-col-sm-12 wky-col-lg-12">
+                <h2 class="heading">{{ view.getTitle() }}</h2>
+            </div>
+        </div>
+        <div class="wky-row wky-wrap">
+        {% for key,row in rows %}
+            <div class="wky-col-sm-12 wky-col-lg-6">
+                {% if loop.first %}
+                    <div class="featured left">
+                        <div class="left-content">
+                            <h3 class="heading medium">{{ view.style_plugin.getField(key, 'title') }}</h3>
+                            <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+                            <a href="{{ view.style_plugin.getField(key, 'url')|striptags|trim }}" class="btn primary-btn right-arrow">Read more</a>
+                        </div>
+                        <div class="left-img">
+                            {{ view.style_plugin.getField(key, 'field_featured_image') }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if not loop.first and loop.index % 2 == 0 %}
+                    <div class="featured right reverse">
+						<div class="right-content">
+                            <h3 class="heading medium">{{ view.style_plugin.getField(key, 'title') }}</h3>
+                            <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+                            <a href="{{ view.style_plugin.getField(key, 'url')|striptags|trim }}" class="btn primary-btn right-arrow">Read more</a>
+                        </div>
+                        <div class="right-img">
+                            {{ view.style_plugin.getField(key, 'field_featured_image') }}
+                        </div>
+                    </div>
+                {% elseif not loop.first and loop.index % 2 != 0 %}
+                    <div class="featured left">
+                        <div class="left-content">
+                            <h3 class="heading medium">{{ view.style_plugin.getField(key, 'title') }}</h3>
+                            <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+                            <a href="{{ view.style_plugin.getField(key, 'url')|striptags|trim }}" class="btn primary-btn right-arrow">Read more</a>
+                        </div>
+                        <div class="left-img">
+                            {{ view.style_plugin.getField(key, 'field_featured_image') }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>

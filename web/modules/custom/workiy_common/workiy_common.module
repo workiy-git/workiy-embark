@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_form_views_exposed_form_alter().
+ */
+function workiy_common_form_views_exposed_form_alter(&$form, &$form_state) {
+    // kint($form['#id']);
+    if ($form['#id'] == 'views-exposed-form-search-website-search') {
+      $form['#action'] = '/search';
+    }
+  }

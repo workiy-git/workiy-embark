@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section id="our-clients">
+    <div class="wky-container">
+        <div class="hint-text"><span class="yellow-square"></span>Our Clients</div>
+        <h2 class="heading"><span class="light">We are committed to transforming our client’s businesses & drive their growth</span> is our responsibility.</h2>
+        <div class="wky-row wky-wrap client-items">
+            {% for key,row in rows %}
+            <div class="wky-col-6 wky-col-sm-6 wky-col-lg-3">
+                <div class="client-item">
+                    <div class="client-logo"><a target="_blank" href="{{ view.style_plugin.getField(key, 'field_website_link') |striptags|trim }}">{{ view.style_plugin.getField(key, 'field_client_image') }}</a></div>
+                    <div class="client-content">
+                        <h4 class="client-name">{{ view.style_plugin.getField(key, 'title') }}</h4>
+                        {{ view.style_plugin.getField(key, 'body') }}
+                         <a target="_blank" href="{{ view.style_plugin.getField(key, 'field_website_link') |striptags|trim }}">Read more</a>
+                        
+                    </div>
+                </div>
+			    </div>
+            {% endfor %}  
+        </div>
+    </div>
+</section>       
