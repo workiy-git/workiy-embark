@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+
+<section id="our-services">
+    <div class="wky-container">
+        <!--<div class="wky-row wky-wrap">
+            <div class="wky-col-sm-12 wky-col-lg-12 text-center">-->
+                <div class="hint-text"><span class="yellow-square"></span>Our Services</div>
+                <h2 class="heading">Our services offer pivotal growth and active results, molding your businesses, <span class="light">with promising opportunities and rich tech-experience.</span></h2>
+            <!--</div>
+        </div>-->
+        <div class="wky-row wky-wrap service-item-wrapper">
+            {% for key,row in rows %}
+            <div class="wky-col-sm-12 wky-col-lg-6 service-item">
+                <div class="service-img">
+                    {{ view.style_plugin.getField(key, 'field_image') }}
+                </div>
+                <div class="service-content">
+                    <div class="yellow-square-border"></div>
+                    <h4 class="heading">{{ view.style_plugin.getField(key, 'name') }}</h4>
+                    <div class="description">{{ view.style_plugin.getField(key, 'description__value') }}</div>
+                    <a href="{{ view.style_plugin.getField(key, 'view_taxonomy_term')|striptags|trim }}" class="link right-arrow white">Read more</a>
+                </div>
+			</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

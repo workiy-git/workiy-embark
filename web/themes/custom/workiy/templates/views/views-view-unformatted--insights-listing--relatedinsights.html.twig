@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section class="insights-listing">
+    <div class="wky-container">
+        <div class="wky-row wky-wrap">
+            {% for key,row in rows %}
+                <div class="wky-col-sm-12 wky-col-lg-4 insights-listing-single">
+                    <div class="insight-image">
+                        {{ view.style_plugin.getField(key, 'field_insights_image') }}
+                    </div>
+                    <div class="insight-content">
+                        <div class="date-tags">
+                            <div class="date">{{ view.style_plugin.getField(key, 'created') }}</div>
+                            <div class="vertical-line"></div>
+                            <div class="tags">
+                            {% for platform in view.style_plugin.getField(key, 'title_1')|striptags|trim|split(',') %}
+                                <span class="{{platform}}">{{platform}}</span> 
+                            {% endfor %}
+                            </div>
+                        </div>
+
+                        <h4 class="heading light"><a href="{{ view.style_plugin.getField(key, 'url')|striptags|trim }}">{{ view.style_plugin.getField(key, 'title') }}</a></h4>
+                        <div class="author">By {{ view.style_plugin.getField(key, 'uid') }}<span class="vertical-line"></span>
+                            {% for platform in view.style_plugin.getField(key, 'title_1')|striptags|trim|split(',') %}
+                                <span class="{{platform}}">{{platform}}</span> 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

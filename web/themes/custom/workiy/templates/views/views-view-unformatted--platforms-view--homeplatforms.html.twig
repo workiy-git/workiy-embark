@@ -1,0 +1,85 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section id="our-platforms" class="large-device-only">
+    <div class="wky-container">
+        <div class="wky-row wky-wrap"> 
+           <div class="wky-col-sm-12 wky-col-lg-6 bg-voilet platform-left">
+                <div class="hint-text"><span class="yellow-square"></span>Our Technologies</div>
+                <h2 class="heading"><span class="light">Experience end-to-end successful acceleration of your </span>business with us!</h2>
+                <div class="platform-logo-slider slider-for">
+                    {% for key,row in rows %}
+                        <div class="platform-logo">
+                            <div class="image">
+							     {{ view.style_plugin.getField(key, 'field_image') }}
+                            </div>
+						</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="view-all" style="margin-right:23%">
+                    <a href="/our-platforms" class="btn primary-btn right-arrow">View All</a>
+                </div>
+           </div>
+           <div class="wky-col-sm-12 wky-col-lg-6 platform-right">
+                <div class="platform-content-slider slider-for">
+                {% for key,row in rows %}
+                    <div class="platform-content">
+                        <h3 class="heading">{{ view.style_plugin.getField(key, 'title') }}</h3>
+                        
+                        <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+                        <a href="{{ view.style_plugin.getField(key, 'view_node')|striptags|trim }}" class="btn primary-btn right-arrow">Read more</a>
+					</div>
+                {% endfor %}
+                </div>
+           </div>
+        </div>
+    </div>
+</section>       
+
+<section id="our-platforms-mobile" class="small-device-only bg-voilet">
+    <div class="wky-container">
+        <div class="wky-row wky-wrap"> 
+           <div class="wky-col-sm-12">
+                <div class="hint-text"><span class="yellow-square"></span>Our Technologies</div>
+                <h2 class="heading"><span class="light">Experience end-to-end successful acceleration of your </span>business with us!</h2>
+                <div class="slider slider-for platform-content-wrapper">
+                {% for key,row in rows %}
+                    <div class="platform-content">
+                        <div class="platform-content-img">{{ view.style_plugin.getField(key, 'field_image') }}</div>
+                        <h3 class="heading">{{ view.style_plugin.getField(key, 'title') }}</h3>
+                        
+                        <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+                        <a href="{{ view.style_plugin.getField(key, 'view_node')|striptags|trim }}" class="btn primary-btn right-arrow">Read more</a>
+					</div>
+                {% endfor %}
+                </div>
+                
+                <div class="view-all">
+                    <a href="/our-platforms" class="btn primary-btn right-arrow">View All</a>
+                </div>
+           </div>
+        </div>
+    </div>
+</section>    

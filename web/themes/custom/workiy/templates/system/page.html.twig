@@ -1,0 +1,215 @@
+<header aria-label="Site header" class="header" id="header" role="banner">
+<style type="text/css">
+
+<!--/*--><![CDATA[/* ><!--*/
+@media screen and (min-width: 480px) {
+ .zb-btone-inner-container.zb-embed-page-title-show {
+    overflow-y: visible;
+}
+}
+.watch-more {
+    
+    color: #424B5A;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 0px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: #626e84;
+    }
+}    
+
+/* The Modal (background) */
+.modal {
+   
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background-color: rgba(0,0,0,0.4);
+}
+.video-popup {
+    
+    z-index: 2;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border: 1px solid #ccc;
+    padding: 10px 111px 0px 20px;
+    background-color: #fff;
+    border-radius: 4px;
+
+    &.visible {
+        display: block;
+    }
+    .close {
+        position: absolute;
+        right: 8px;
+        top: 4%;
+        font-weight: 900;
+        font-size: 58px;
+        color: black;
+        padding: 5px 10px;
+        border-bottom: none;
+	float:right;
+    }
+}
+
+.video-wrapper {
+    width: 400px;
+    margin: 30px auto;
+    
+    @media only screen and (max-width: 560px) {
+      width: 250px;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 55.25%;
+        height: 0;
+        overflow: hidden;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+@media (max-width: 600px)
+header.whitebg .watch-more a {
+    filter: brightness(1) invert(0);
+}
+
+@media (max-width: 600px)
+header .watch-more a {
+    font-size: 0;
+    background-color: transparent;
+    border: 0;
+    background-image: url(/sites/default/files/2023-01/appointment-book.png);
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    display: inline-block;
+    padding: 0;
+}
+/*--><!]]>*/
+</style>
+<div class="menu-overlay"></div>
+  <div class="wky-container">
+    <div class="wky-row align-center">
+      <div class="wky-col-6 wky-col-sm-6 wky-col-lg-6">
+        <div class="main-logo">{{ page.branding }}</div>
+      </div>
+      <div class="wky-col-6 wky-col-sm-6 wky-col-lg-6">
+        <div class="header-right">
+<div class="clearfix-text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item" style="margin-top: 16px;">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script><script type="text/javascript">
+<!--//--><![CDATA[// ><!--
+
+$(function(){
+    $('#button').click(function(){
+        if(!$('#iframe').length) {
+		$('#iframeHolder').html('<iframe frameborder="0" height="" src="https://bookings.workiy.com/portal-embed#/customer/workiyinc" width=""style="margin-left:0px;">');
+                $('body').css('overflow', 'hidden');
+        }
+    });
+   $('.watch-more').click(function(){
+        if(!$('#iframe').length) {
+		$('#iframeHolder').html('<iframe frameborder="0" height="" src="https://bookings.workiy.com/portal-embed#/customer/workiyinc" width=""style="margin-left:0px;">');
+                $('body').css('overflow', 'hidden');
+        }
+        if(!$('.video-popup').length) {
+                $('body').css('overflow', 'hidden');
+        }
+    });
+    $(document).on('click', '.close', function () {
+      $('body').css('overflow', 'auto');
+     });
+});
+
+//--><!]]>
+</script>
+<p><a class="watch-more" href="#"><button id="button" style="padding: 5px 20px;
+border: 0;
+background: #ffba08;
+font-weight: 700;
+color: #fff;
+border-radius: 50px;margin-bottom: 0px;
+    margin-right: 20px;font-family:'Poppins';">Book an Appointment</button></a><!-- The Modal --></p>
+
+<div class="modal" id="modal" style="display:none;">&nbsp;</div>
+
+<div class="video-popup" style="display: none;"><a class="close" style="margin-left: 0%;
+    font-size: 20px;
+    border: 1px solid black;
+    padding: 0px 10px 2px 10px;
+    border-radius: 50%;font-weight: 300;background-color:black;color:white;cursor:pointer;">x</a> <!-- Modal content -->
+
+<div class="video-wrapper">
+<div class="video-container"><iframe allowfullscreen="" frameborder="0" height="480px" src="https://bookings.workiy.com/portal-embed#/customer/workiyinc" width="500px"></iframe></div>
+</div>
+</div>
+</div>
+          <div class="get-in-touch">
+            <a href="/contact-us" class="btn orange-bg white-text">Get in touch</a>
+          </div>
+          <div class="search">
+            <div class="search-icon"></div>
+            <div class="search-close"></div>
+            <div class="search-content">{{ page.search }}</div>
+          </div>
+          <div class="main-navigation">
+            <div class="humburger-menu"></div>
+            <div class="menu-close"></div>
+            {{ page.navigation }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="featured" id="featured" role="complementary">
+   {{ page.featured }}
+</section>
+<section class="main" id="main">
+   <main aria-label="Site main content" class="content" id="content" role="main">
+     {{ page.content }}
+   </main>
+</section>
+<footer aria-label="Site footer" class="footer" id="footer" role="contentinfo">
+  <div class="footer--top">
+    <div class="wky-container">
+      <div class="wky-row">
+        <div class="wky-col-md-4 wky-col-lg-4 footer-left">
+          <div class="footer-left-inner">
+             {{ page.footer_first }}
+          </div>
+        </div>
+        <div class="wky-col-md-8 wky-col-lg-8 footer-right">
+          <div class="footer-right-inner">
+             {{ page.footer_second }}
+          </div>
+        </div>
+        <!-- {{ page.footer_third }} -->
+      </div>
+    </div>
+  <div class="footer--bottom">
+    <div class="wky-container">
+      <div class="wky-row align-center">
+        <div class="wky-col-lg-12">
+          {{ page.footer_bottom }}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
