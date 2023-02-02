@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section class="testimonial">
+    <div class="wky-container">
+        <div class="wky-row wky-wrap">
+        	<div class="wky-col-sm-12 wky-offset-col-6 wky-col-lg-6">
+        		<h2 class="heading">Testimonials</h2>
+        	</div>
+            <div class="wky-col-sm-12 wky-col-lg-12">
+                <div class="testimonial-wrapper">
+                    <div class="testimonial-item wky-row">
+						<div class="wky-col-sm-12 wky-col-lg-6">
+							<div class="testimonial-img-wrapper slider slider-for">
+								{% for key,row in rows %}
+									<div class="testimonial-img">
+										{{ view.style_plugin.getField(key, 'field_testmonial_image') }}
+									</div>
+								{% endfor %}
+							</div>
+							<div class="top-content">
+								<div class="testimonial-quotes"></div>
+							</div>
+							<div class="testimonial-dots slider slider-nav">
+								{% for key,row in rows %}
+									<div class="slider-dots"></div>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="wky-col-sm-12 wky-col-lg-6">
+							<div class="testimonial-content">
+								<div class="top-content">
+									<div class="testimonial-quotes"></div>
+								</div>
+								<div class="middle-content-wrapper slider slider-for">
+									{% for key,row in rows %}
+										<div class="middle-content">
+											<h4 class="heading">{{ view.style_plugin.getField(key, 'title') }}</h4>
+											<p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+										</div>
+									{% endfor %}
+								</div>
+								<div class="bottom-content-wrapper slider slider-for">
+									{% for key,row in rows %}
+										<div class="bottom-content">
+											<h4 class="heading">{{ view.style_plugin.getField(key, 'field_name') }}</h4>
+											<p class="description">{{ view.style_plugin.getField(key, 'field_designation') }}</p>
+										</div>
+									{% endfor %}
+								</div>
+								
+							</div>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

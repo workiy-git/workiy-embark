@@ -1,0 +1,57 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section class="our-team">
+	<div class="wky-container">
+		<div class="wky-row wky-wrap">
+			<div class="wky-col-sm-12 wky-col-lg-4">
+                <div class="team-content">
+                    <!--<div class="hint-text"><span class="yellow-square"></span>Build with us</div>-->
+                    <h2 class="heading"><span class="light">Our </span>Team</h2>
+                    <!--<p class="description">Every organization builds a promising client line through their dedicated services. Likewise, Workiy’s Services enable our clients to deliver their commitments even better! But who are the people behind these deliverables? What is this team that fulfils these promises?</p>
+                    <p>Meet the team, who build your dream!</p>-->                    
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div class="team-profile-wrapper">
+        {% for key,row in rows %}
+            <div class="team-profile">
+                <div class="team-wrapper">
+                    <div class="team-description">
+                                        
+                    </div>
+                    <div class="team-img" style="height:100%;width:100%;">
+ <h3 class="heading">{{ view.style_plugin.getField(key, 'title') }}</h3>
+<p class="description">{{ view.style_plugin.getField(key, 'body') }}</p> 
+                        {{ view.style_plugin.getField(key, 'field_team_image') }}
+
+                        
+                    </div>
+                </div>
+            </div>
+                        
+        {% endfor %}        
+    </div> 
+</section>       

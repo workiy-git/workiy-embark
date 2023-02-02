@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section class="our-insight">
+    <div class="wky-container">
+        <div class="wky-row wky-wrap">
+            <div class="wky-col-sm-12 wky-col-lg-12">
+                <h2 class="heading">What's new</h2>
+                <h4 class="heading light">Our Insight</h4>
+                <div class="insight-wrapper">
+                {% for key,row in rows %}
+                
+                    <div class="insight-item wky-col-sm-12 wky-col-lg-4">
+                        <div class="insight-image">
+                            {{ view.style_plugin.getField(key, 'field_insights_image') }}
+						</div>
+                        <div class="insight-content">
+                            <div class="date-tags">
+                                <div class="date">{{ view.style_plugin.getField(key, 'created') }}</div>
+                                <div class="vertical-line"></div>
+                                <div class="tags">
+                                    {{ view.style_plugin.getField(key, 'field_platform') }}
+                                </div>
+							</div>
+							<h4 class="heading light"><a href="{{ view.style_plugin.getField(key, 'view_node')|striptags|trim }}">{{ view.style_plugin.getField(key, 'title') }}</a></h4>
+							<div class="author">By {{ view.style_plugin.getField(key, 'uid') }}<span class="vertical-line"></span>{{ view.style_plugin.getField(key, 'field_platform') }}</div>
+                        </div>
+                    </div>
+               
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

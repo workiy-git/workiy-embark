@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+
+<section id="featured-work">
+    <div class="wky-container">
+        <div class="wky-row wky-wrap">
+        {% for key,row in rows %}
+            <div class="wky-col-sm-12 wky-col-lg-6">
+                <div class="featured-img">
+                    {{ view.style_plugin.getField(key, 'field_insights_image') }}
+                </div>
+            </div>
+            <div class="wky-col-sm-12 wky-col-lg-6">
+                <div class="featured-content">
+                    <h4 class="heading">{{ view.style_plugin.getField(key, 'title') }}</h4>
+                    <p class="description">{{ view.style_plugin.getField(key, 'field_subtitle') }}</p>
+                    {{ view.style_plugin.getField(key, 'body') }}
+                    <div class="logos">
+                        <div class="primary-logo">
+                            {{ view.style_plugin.getField(key, 'field_image') }}
+                        </div>
+                        <div class="secondary-logo">
+                        {{ view.style_plugin.getField(key, 'view') }}
+                        </div>
+                    </div>
+                    <a href="{{ view.style_plugin.getField(key, 'view_node')|striptags|trim }}" class="btn primary-btn right-arrow">Read more</a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

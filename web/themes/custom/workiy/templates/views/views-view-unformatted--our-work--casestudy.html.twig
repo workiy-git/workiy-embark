@@ -1,0 +1,145 @@
+
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<section id="our-work" class="large-device-only">
+    <div class="half-circle"></div>
+    <div class="wky-container">
+        <div class="wky-row">
+            <div class="wky-col-12">
+                <div class="work-scrolling">
+                    <div class="wky-row">
+                        <div class="wky-col-sm-12 wky-col-lg-6">
+                            <div class="work-left">
+                                <div class="sticky-display">
+                                    <div class="hint-text"><span class="yellow-square"></span>Showing our Works</div>
+                                    <h2 class="heading">Our Works<span class="light"> Include.</span></h2>
+                                    <div class="client-logo-wrapper">
+                                        <ul>
+                                            {% for key,row in rows %}
+                                                {% if key == 0 %}
+                                                    <li>
+                                                {% else %}
+                                                    <li>
+                                                {% endif %}
+                                                    {{ view.style_plugin.getField(key, 'field_client_image') }}
+                                                </li>
+                                             {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <div class="platform-logo-wrapper">
+                                        <ul>
+                                            {% for key,row in rows %}
+                                                {% if key == 0 %}
+                                                    <li>
+                                                {% else %}
+                                                    <li>
+                                                {% endif %}
+                                                    {{ view.style_plugin.getField(key, 'field_image') }}
+                                                    </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                   
+                                </div>
+<div id="our-foot"><a href="our-work" class="view-all our-work-view-all">View all works</a></div>
+                            </div>
+                            
+                        </div>
+                        <div class="wky-col-sm-12 wky-col-lg-6">
+                            <div class="work-right">
+                                <div class="work-item-wrapper">
+                                    {% for key,row in rows %}
+                                       {% if key == 0 %}
+                                        <div id="work-n" class="work-item one item-{{ key }}">
+                                        {% elseif key == 1 %}
+                                        <div class="work-item two item-{{ key }}">
+										{% elseif key == 2 %}
+                                        <div class="work-item three item-{{ key }}">
+										{% elseif key == 3 %}
+                                        <div class="work-item four item-{{ key }}">
+                                        {% else %}
+                                        <div id="fif" class="work-item five item-{{ key }}">
+                                        {% endif %}
+                                            <h3 class="heading">{{ view.style_plugin.getField(key, 'title') }}</h3>
+                                            {# <h3 class="heading light">{{ view.style_plugin.getField(key, 'field_subtitle') }}</h3> #}
+                                            <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+                                            {# <p class="url"><a href="{{ view.style_plugin.getField(key, 'field_website_link') }}">{{ view.style_plugin.getField(key, 'field_website_link') }}</a></p>    #}
+                                            <a href="{{ view.style_plugin.getField(key, 'view_node')|striptags|trim }}" class="btn primary-btn right-arrow">Read more</a>
+                                        </div>
+                                     {% endfor %}
+                                 </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+
+
+<section id="our-work-mobile" class="small-device-only">
+    <div class="half-circle"></div>
+    <div class="wky-container">
+        <div class="wky-row">
+            <div class="wky-col-12">
+            <div class="hint-text"><span class="yellow-square"></span>Showing our Works</div>
+            <h2 class="heading">Our Works<span class="light"> Include.</span></h2>
+              <div class="work-item-wrapper">
+                    {% for key,row in rows %}
+                        {% if key == 0 %}
+                        <div class="work-item one item-{{ key }}">
+                        {% elseif key == 1 %}
+                        <div class="work-item two item-{{ key }}">
+                        {% else %}
+                        <div class="work-item three item-{{ key }}">
+                        {% endif %}
+                            {{ view.style_plugin.getField(key, 'field_client_image') }}
+                            <h3 class="heading">{{ view.style_plugin.getField(key, 'title') }}</h3>
+                            {# <h3 class="heading light">{{ view.style_plugin.getField(key, 'field_subtitle') }}</h3> #}
+                            <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+                            {# <p class="url"><a href="{{ view.style_plugin.getField(key, 'field_website_link') }}">{{ view.style_plugin.getField(key, 'field_website_link') }}</a></p>    #}
+                            <a href="{{ view.style_plugin.getField(key, 'view_node')|striptags|trim }}" class="btn primary-btn right-arrow">Read more</a>
+                        </div>
+                        {% endfor %}
+                </div>
+                <ul class="platform-logo-wrapper">
+                    {% for key,row in rows %}
+                        {% if key == 0 %}
+                            <li>
+                        {% else %}
+                            <li>
+                        {% endif %}
+                            {{ view.style_plugin.getField(key, 'field_image') }}
+                            </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

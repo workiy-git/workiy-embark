@@ -1,0 +1,22 @@
+global-styling:
+  version: 1.x
+  js:
+    js/globalscript.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+  css:
+    theme:
+      css/style.css: {}
+slick-slider:
+  version: 1.x
+  js:
+    js/slick.min.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+  css:
+    theme:
+      css/slick.min.css: {}

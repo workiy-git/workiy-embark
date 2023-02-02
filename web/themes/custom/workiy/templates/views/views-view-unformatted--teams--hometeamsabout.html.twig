@@ -1,0 +1,77 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set row_classes = [
+    default_row_class ? 'views-row',
+  ]
+%}
+<style>
+.our-team .slick-slide img
+{
+  width: 100%;
+  height: 50%;
+  margin-top: 0px;
+}
+.our-team .slick-slide, .our-team .slick-slide .team-description{
+opacity: 1;
+transition: opacity .5s;
+
+}
+</style>
+<section class="our-team">
+	<div class="wky-container">
+		<div class="wky-row wky-wrap">
+			<div class="wky-col-sm-12 wky-col-lg-12">
+                <div class="team-content">
+                    <div class="hint-text" style="text-align:left"></span>Build with us</div>
+                    <h2 class="heading"><span class="light">Our </span>Team</h2>
+                    <p class="description">Every organization builds a promising client line through their dedicated services. Likewise, Workiy’s Services enable our clients to deliver their commitments even better! But who are the people behind these deliverables? What is this team that fulfils these promises?</p>
+                    <p>Meet the team, who build your dream!</p>                    
+                </div>
+            </div>
+        </div>
+    </div>    
+<div class="wky-col-sm-12 wky-col-lg-12">
+    <div class="team-profile-wrapper-about">
+
+        {% for key,row in rows %}
+
+            <div class="team-profile">
+                <div class="team-wrapper">
+                    <div class="team-img">
+                        {{ view.style_plugin.getField(key, 'field_team_image') }}
+			      <h3 class="heading" style="color:black !important;margin-top: 5%;">{{ view.style_plugin.getField(key, 'title') }}</h3>
+			      <p class="description">{{ view.style_plugin.getField(key, 'body') }}</p>
+			<div class="social-links" style="width: 30%;height: 13%;position: absolute;top: 101%;display:flex;">
+                             {{ view.style_plugin.getField(key, 'field_social_media') }}
+                        </div>
+                    </div>
+                    <div class="team-description">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}   
+     
+    </div>  
+</div>  
+</section>       
